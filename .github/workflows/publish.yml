@@ -1,0 +1,29 @@
+# Publica las librerías en GitHub Packages al subir una etiqueta de versión (v0.1.0, v0.2.0…).
+# La versión de los pom debe coincidir con la etiqueta.
+name: Publicar
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          server-id: github
+      - name: Comprobar que la etiqueta y la versión coinciden
+        run: |
+          VERSION=$(mvn -q -B help:evaluate -Dexpression=project.version -DforceStdout)
+          test "v$VERSION" = "$GITHUB_REF_NAME" || { echo "La etiqueta $GITHUB_REF_NAME no coincide con la versión $VERSION de los pom"; exit 1; }
+      - name: Publicar
+        run: mvn -B deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

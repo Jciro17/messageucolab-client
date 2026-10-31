@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>co.edu.uco</groupId>
+        <artifactId>messageucolab-client-parent</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>messageucolab-client-core</artifactId>
+    <name>MessageUcoLab client core</name>
+    <description>Interfaz Messages y modelo Message: lo que usa el adaptador de mensajes de cada backend.</description>
+    <dependencies>
+        <!-- solo Reactor, para find(): los backends del semillero son WebFlux y ya lo tienen -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+    </dependencies>
+</project>

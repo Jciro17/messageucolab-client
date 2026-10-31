@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>co.edu.uco</groupId>
+        <artifactId>messageucolab-client-parent</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>messageucolab-client-spring-boot-starter</artifactId>
+    <name>MessageUcoLab client Spring Boot starter</name>
+    <description>Adaptador del puerto Messages contra la ruta pública de MessageUcoLab: va en la infraestructura de cada backend.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>co.edu.uco</groupId>
+            <artifactId>messageucolab-client-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+    </dependencies>
+</project>

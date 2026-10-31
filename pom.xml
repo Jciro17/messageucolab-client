@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>co.edu.uco</groupId>
+    <artifactId>messageucolab-client-parent</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+    <name>MessageUcoLab client</name>
+    <description>Cliente de MessageUcoLab para los backends del semillero: un puerto (core) y su adaptador (starter).</description>
+
+    <modules>
+        <module>messageucolab-client-core</module>
+        <module>messageucolab-client-spring-boot-starter</module>
+    </modules>
+
+    <properties>
+        <!-- Java 17 y Spring Boot 3.2 como mínimo: así sirve tanto a backends con Boot 3 como con Boot 4 -->
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>3.2.5</spring-boot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>co.edu.uco</groupId>
+                <artifactId>messageucolab-client-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/Jciro17/messageucolab-client</url>
+        </repository>
+    </distributionManagement>
+</project>
